@@ -14,8 +14,8 @@ Set-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Control\Lsa\MSV1_0\" -Nam
 Set-ItemProperty -Path "HKLM:\SYSTEM\CurrentControlSet\Services\Netlogon\Parameters" -Name MaximumPasswordAge -Value 30 
 BCDEDIT /set "{current}" nx OptOut 
 #This value does not exist#Set-ItemProperty -Path "HKLM:\SYSTEM\Policies\Microsoft\Windows\DeviceGuard" -Name LsaCfgFlags -Value 1 
-#Rename-LocalUser -Name "Administrator" -NewName "16 AF Magic Admin" 
-#Rename-LocalUser -Name "Guest" -NewName "16 AF Magic Guest" | Get-LocalUser Guest | Disable-LocalUser "16 AF Magic Guest" 
+#Rename-LocalUser -Name "Administrator" -NewName "*New Name*" 
+#Rename-LocalUser -Name "Guest" -NewName "*New Name*" | Get-LocalUser Guest | Disable-LocalUser "*New Name*" 
 # Loop through each profile on the machine</p>
 Foreach ($UserProfile in $UserProfiles) {
     # Load User ntuser.dat if it's not already loaded
@@ -57,6 +57,6 @@ Set-ItemProperty -Path "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies
 
 
 
-#$Pin = ConvertTo-SecureString "205020" -AsPlainText -Force
-#Enable-BitLocker -MountPoint "C:" -EncryptionMethod Aes256 -Pin $Pin -TpmAndPinProtector -UsedSpaceOnly
-#Enable-BitLocker -MountPoint "D:" -EncryptionMethod Aes256 -Pin $Pin -TpmAndPinProtector -UsedSpaceOnly 
+#$Pin = ConvertTo-SecureString "*PIN*" -AsPlainText -Force
+#Enable-BitLocker -MountPoint "*Specify Drive*:" -EncryptionMethod Aes256 -Pin $Pin -TpmAndPinProtector -UsedSpaceOnly
+#Enable-BitLocker -MountPoint "*Specifiy Drive*:" -EncryptionMethod Aes256 -Pin $Pin -TpmAndPinProtector -UsedSpaceOnly 
